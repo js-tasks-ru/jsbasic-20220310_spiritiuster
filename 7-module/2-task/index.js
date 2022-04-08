@@ -37,12 +37,14 @@ export default class Modal {
 
 	open() {
 		document.body.classList.add('is-modal-open');
-		document.querySelector('.container').insertAdjacentElement('beforeEnd', this.modal);
+		document.body.insertAdjacentElement('beforeEnd', this.modal);
 	}
 	
 	close() {
 		document.body.classList.remove('is-modal-open');
-		document.querySelector('.modal').remove();
+		if (document.querySelector('.modal')) {
+			document.querySelector('.modal').remove();
+		}
 		document.removeEventListener('keydown', this.keyDownBound);
 	}
 
