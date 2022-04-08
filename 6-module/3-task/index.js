@@ -70,8 +70,8 @@ export default class Carousel {
 	}
 
 	move() {
-		const width = document.querySelector('.container').offsetWidth,
-			inner = document.querySelector('.carousel__inner'),
+		const width = this.elem.offsetWidth,
+			inner = this.elem.querySelector('.carousel__inner'),
 			shift = width * this._current + 'px';
 
 		inner.style.transform = `translateX(-${shift})`;
