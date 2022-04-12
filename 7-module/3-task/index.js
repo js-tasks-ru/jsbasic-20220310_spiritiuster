@@ -1,5 +1,3 @@
-import createElement from '../../assets/lib/create-element.js';
-
 export default class StepSlider {
 	constructor({ steps, value = 0 }) {
 		this._steps = steps;
@@ -13,13 +11,13 @@ export default class StepSlider {
 			sliderSteps.push(i === this._value ? '<span class="slider__step-active"></span>' : '<span></span>');
 		}
 
-		const slider = createElement(`<div class="slider">
-			<div class="slider__thumb">
+		const slider = document.createElement('div');
+		slider.classList.add('slider');
+		slider.innerHTML = `<div class="slider__thumb">
 				<span class="slider__value">${this._value}</span>
 			</div>
 			<div class="slider__progress" style="width:0;"></div>
-			<div class="slider__steps"></div>
-		</div>`);
+			<div class="slider__steps"></div>`;
 
 		this.slider = slider;
 
