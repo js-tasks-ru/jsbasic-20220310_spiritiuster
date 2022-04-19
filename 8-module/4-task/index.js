@@ -116,17 +116,21 @@ export default class Cart {
 			body.insertAdjacentElement('beforeEnd', this.renderProduct(item.product, item.count));
 		});
 		body.insertAdjacentElement('beforeEnd', this.renderOrderForm());
+
 		
 		modal.setTitle('Your order');
 		modal.setBody(body);
 		modal.open();
 
+		this.form = document.querySelector('form');
+		this.form.addEventListener('submit', event => {
+			this.cartItems = [];
+			this.cartIcon.update(this);
+			this.onSubmit(event);
+		});
+
 		document.querySelector('.modal__body').onclick = e => {
 
-			if (e.target.closest('.cart-form')) {
-				document.querySelector('.cart-form').addEventListener('submit', this.onSubmit);
-				return;
-			}
 			if (e.target.closest('.cart-product')) {
 				let btn,
 					parent = e.target.closest('.cart-product'),
@@ -180,8 +184,6 @@ export default class Cart {
 		fetch('https://httpbin.org/post', { method: 'POST', body: data })
 			.then( response => {
 				if (response.ok) {
-					this.cartItems = [];
-					// this.cartIcon.update(this);
 					document.querySelector('.modal__title').textContent = 'Success!';
 					document.querySelector('.modal__body').innerHTML = `<div class="modal__body-inner">
 						<p>

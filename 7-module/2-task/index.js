@@ -2,7 +2,7 @@ import createElement from '../../assets/lib/create-element.js';
 
 export default class Modal {
 	constructor() {
-		this.modal = createElement(`<div class="modal">
+		this.elem = createElement(`<div class="modal">
 			<div class="modal__overlay"></div>
 			<div class="modal__inner">
 			<div class="modal__header">
@@ -25,8 +25,8 @@ export default class Modal {
 	}
 
 	handlers() {
-		this.modal.addEventListener('click', event => {
-			const btn = this.modal.querySelector('.modal__close');
+		this.elem.addEventListener('click', event => {
+			const btn = this.elem.querySelector('.modal__close');
 			if (event.target === btn || event.target.parentNode === btn) {
 				this.close();
 			}
@@ -37,7 +37,7 @@ export default class Modal {
 
 	open() {
 		document.body.classList.add('is-modal-open');
-		document.body.insertAdjacentElement('beforeEnd', this.modal);
+		document.body.insertAdjacentElement('beforeEnd', this.elem);
 	}
 	
 	close() {
@@ -49,10 +49,10 @@ export default class Modal {
 	}
 
 	setTitle(title) {
-		this.modal.querySelector('.modal__title').textContent = title;
+		this.elem.querySelector('.modal__title').textContent = title;
 	}
 
 	setBody(body) {
-		this.modal.querySelector('.modal__body').insertAdjacentElement('beforeEnd', body);
+		this.elem.querySelector('.modal__body').insertAdjacentElement('beforeEnd', body);
 	}
 }

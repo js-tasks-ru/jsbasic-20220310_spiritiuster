@@ -53,6 +53,7 @@ export default class CartIcon {
 			} else if (window.innerWidth >= 768) {
 				this.elem.style.position = 'absolute';
 				this.elem.style.left = 'auto';
+				this.elem.style.right = '10px';
 			} else {
 				this.elem.style.position = '';
 				this.elem.style.left = '';
