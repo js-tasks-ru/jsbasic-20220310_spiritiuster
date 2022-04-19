@@ -50,6 +50,7 @@ export default class CartIcon {
 				this.elem.style.position = 'fixed';
 				this.elem.style.zIndex = '99';
 				this.elem.style.left = Math.min(elemLeft, elemRight) + 'px';
+				this.elem.style.right = '';
 			} else if (window.innerWidth >= 768) {
 				this.elem.style.position = 'absolute';
 				this.elem.style.left = 'auto';
@@ -57,6 +58,7 @@ export default class CartIcon {
 			} else {
 				this.elem.style.position = '';
 				this.elem.style.left = '';
+				this.elem.style.right = '';
 			}
 		}
 	}
