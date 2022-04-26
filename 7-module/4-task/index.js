@@ -22,6 +22,10 @@ export default class StepSlider {
 		return elem;
 	}
 
+	value() {
+		return this._value;
+	}
+
 	setValue(value) {
 		this._value = value;
 		let percents = this._value / this._segments * 100;

@@ -29,7 +29,13 @@ export default class ProductGrid {
 		this.gridInner.innerHTML = '';
 
 		this.products
-			.filter(item => item.nuts !== this.filters.noNuts)
+			// .filter(item => item.nuts !== this.filters.noNuts)
+			.filter(item => {
+				if (this.filters.noNuts && item.nuts === this.filters.noNuts) {
+					return;
+				}
+				return item;
+			})
 			.filter(item => item.spiciness <= this.filters.maxSpiciness)
 			.filter(item => {
 				if (!this.filters.vegeterianOnly) {
@@ -53,6 +59,7 @@ export default class ProductGrid {
 
 	updateFilter = filters =>  {
 		Object.assign(this.filters, filters);
+		// console.log(this.filters);
 		this.fillGrid();
 	}
 }

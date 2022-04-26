@@ -9,6 +9,7 @@ export default class CartIcon {
 
 	render() {
 		this.elem = createElement('<div class="cart-icon"></div>');
+		return this.elem;
 	}
 
 	update(cart) {
@@ -39,9 +40,10 @@ export default class CartIcon {
 	}
 
 	updatePosition() {
+		let elemTop = this.elem.offsetTop;
+
 		if (this.elem.offsetWidth) {
-			let elemTop = this.elem.offsetTop,
-				scrollTop = window.scrollY,
+			let scrollTop = window.scrollY,
 				container = document.querySelectorAll('.container')[0],
 				elemLeft = container.getBoundingClientRect().right + 20,
 				elemRight = window.innerWidth - this.elem.offsetWidth - 10;
@@ -50,10 +52,6 @@ export default class CartIcon {
 				this.elem.style.position = 'fixed';
 				this.elem.style.zIndex = '99';
 				this.elem.style.left = Math.min(elemLeft, elemRight) + 'px';
-				this.elem.style.right = '';
-			} else if (window.innerWidth >= 768) {
-				this.elem.style.position = 'absolute';
-				this.elem.style.left = 'auto';
 				this.elem.style.right = '10px';
 			} else {
 				this.elem.style.position = '';

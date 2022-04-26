@@ -5,6 +5,7 @@ export default class RibbonMenu {
 		this.categories = categories;
 		this.scrollWidth = 350;
 		this.elem = this.render();
+		this._value = '';
 	}
 
 	render() {
@@ -42,6 +43,10 @@ export default class RibbonMenu {
 		return ribbon;
 	}
 	
+	value() {
+		return this._value;
+	}
+
 	handlers() {
 		this.ribbon.addEventListener('click', event => {
 			if (event.target === this.btnRight || event.target.parentNode === this.btnRight) {
@@ -56,6 +61,8 @@ export default class RibbonMenu {
 					item.classList.remove('ribbon__item_active');
 				})
 				event.target.classList.add('ribbon__item_active');
+
+				this._value = event.target.dataset.id;
 
 				const ribbonSelect = new CustomEvent('ribbon-select', {
 					detail: event.target.dataset.id,
