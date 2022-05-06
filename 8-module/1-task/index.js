@@ -46,7 +46,7 @@ export default class CartIcon {
 			let scrollTop = window.scrollY,
 				container = document.querySelectorAll('.container')[0],
 				elemLeft = container.getBoundingClientRect().right + 20,
-				elemRight = window.innerWidth - this.elem.offsetWidth - 10;
+				elemRight = document.documentElement.clientWidth - this.elem.offsetWidth - 10;
 			
 			if (scrollTop >= elemTop && window.innerWidth >= 768) {
 				this.elem.style.position = 'fixed';
