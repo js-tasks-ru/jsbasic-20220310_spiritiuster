@@ -22,6 +22,7 @@ export default class ProductGrid {
 		grid.insertAdjacentElement('beforeend', gridInner);
 		
 		this.fillGrid();
+
 		return grid;
 	}
 
@@ -54,7 +55,7 @@ export default class ProductGrid {
 			.map(item => {
 				let product = new ProductCard(item);
 				this.gridInner.append(product.elem);
-			});
+			});	
 	}
 
 	updateFilter = filters =>  {

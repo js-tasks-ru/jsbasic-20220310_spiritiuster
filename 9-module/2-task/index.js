@@ -12,8 +12,7 @@ import Cart from '../../8-module/4-task/index.js';
 
 export default class Main {
 
-	constructor() {
-	}
+	constructor() {}
 	
 	async render() {
 
@@ -83,20 +82,19 @@ export default class Main {
 			}
 		});
 
-		document.body.addEventListener('slider-change', () => {
+		document.body.addEventListener('slider-change', event => {
 			this.productsGrid.updateFilter({
-				maxSpiciness: this.stepSlider.value()
+				maxSpiciness: event.detail
 			});
 		})
 
 		document.body.addEventListener('ribbon-select', event => {
 			this.productsGrid.updateFilter({
-				category: this.ribbonMenu.value()
+				category: event.detail
 			});
 		})
 
 		document.querySelector('#nuts-checkbox').addEventListener('change', event => {
-			console.log(event.target.checked);
 			this.productsGrid.updateFilter({
 				noNuts: event.target.checked
 			});
