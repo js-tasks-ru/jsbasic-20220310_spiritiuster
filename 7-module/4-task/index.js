@@ -2,6 +2,7 @@ export default class StepSlider {
 	constructor({ steps, value = 0 }) {
 		this._steps = steps;
 		this._segments = this._steps-1;
+		this._value = value;
 		this.render();
 		this.setValue(value);
 		this.handlers();
@@ -20,6 +21,10 @@ export default class StepSlider {
 
 		this.elem = elem;
 		return elem;
+	}
+
+	value() {
+		return this._value;
 	}
 
 	setValue(value) {
